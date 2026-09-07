@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)file:///C:/Users/karau/Desktop/%D0%BC%D0%B5%D0%BD%D1%8E/%D0%9C%D0%B5%D0%BD%D1%8E.html -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню с цветами и декором</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #e8e0d5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            padding: 20px;
+        }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #fdf8f0;
+            margin-bottom: 20px;
+            padding: 16mm 14mm 12mm;
+            box-shadow: 0 0 20px rgba(0,0,0,0.12);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+            position: relative;
+            border: 4px solid transparent;
+        }
+        /* декоративная рамка */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 8px; left: 8px; right: 8px; bottom: 8px;
+            border: 2px solid rgba(0,0,0,0.08);
+            border-radius: 2px;
+            pointer-events: none;
+        }
+        .title {
+            font-size: 34pt;
+            font-weight: 700;
+            text-align: center;
+            padding-bottom: 5mm;
+            margin-bottom: 6mm;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        .title-deco {
+            text-align: center;
+            font-size: 16pt;
+            letter-spacing: 8px;
+            margin-bottom: 4mm;
+            opacity: 0.6;
+        }
+        .columns {
+            display: flex;
+            gap: 8mm;
+            flex: 1;
+        }
+        .col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .category {
+            font-size: 17pt;
+            font-weight: 700;
+            margin-top: 5mm;
+            margin-bottom: 2.5mm;
+            border-bottom: 2px solid;
+            padding-bottom: 1mm;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2.2mm;
+        }
+        .item-name {
+            font-size: 13pt;
+            font-weight: 600;
+            color: #2c2c2c;
+            line-height: 1.3;
+        }
+        .item-composition {
+            font-size: 10.5pt;
+            font-weight: 400;
+            color: #666;
+            line-height: 1.4;
+            margin-top: 0.5mm;
+            padding-left: 3mm;
+            font-style: italic;
+        }
+        .footer-line {
+            margin-top: auto;
+            border-top: 2px solid #ddd;
+            padding-top: 4mm;
+            text-align: center;
+            font-size: 14pt;
+            letter-spacing: 6px;
+            opacity: 0.7;
+        }
+
+        /* ===== ФРАНЦУЗСКАЯ ===== */
+        .french { border-color: #8B1A1A; background: #fdf6f0; }
+        .french .title { color: #8B1A1A; border-bottom-color: #8B1A1A; }
+        .french .category { color: #8B1A1A; border-bottom-color: #8B1A1A; }
+
+        /* ===== ИТАЛЬЯНСКАЯ ===== */
+        .italian { border-color: #008C45; background: #f6faf5; }
+        .italian .title { color: #008C45; border-bottom-color: #008C45; }
+        .italian .category { color: #008C45; border-bottom-color: #008C45; }
+
+        /* ===== АЗИАТСКАЯ ===== */
+        .asian { border-color: #B8860B; background: #fdfaf2; }
+        .asian .title { color: #B8860B; border-bottom-color: #B8860B; }
+        .asian .category { color: #B8860B; border-bottom-color: #B8860B; }
+
+        /* ===== РУССКАЯ ===== */
+        .russian { border-color: #B22222; background: #fdf6f3; }
+        .russian .title { color: #B22222; border-bottom-color: #B22222; }
+        .russian .category { color: #B22222; border-bottom-color: #B22222; }
+
+        /* ===== КАВКАЗСКАЯ ===== */
+        .caucasian { border-color: #D2691E; background: #fdf7f0; }
+        .caucasian .title { color: #D2691E; border-bottom-color: #D2691E; }
+        .caucasian .category { color: #D2691E; border-bottom-color: #D2691E; }
+
+        /* ===== СОУСЫ ===== */
+        .sauces { border-color: #5D3A1A; background: #f8f4ef; }
+        .sauces .title { color: #5D3A1A; border-bottom-color: #5D3A1A; }
+        .sauces .category { color: #5D3A1A; border-bottom-color: #5D3A1A; }
+
+        /* ===== ДЕСЕРТЫ ===== */
+        .desserts { border-color: #8B008B; background: #fdf6fc; }
+        .desserts .title { color: #8B008B; border-bottom-color: #8B008B; }
+        .desserts .category { color: #8B008B; border-bottom-color: #8B008B; }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .page { box-shadow: none; margin: 0; border-radius: 0; page-break-after: always; border-width: 2px; }
+            .page:last-child { page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== 1. ФРАНЦУЗСКАЯ ==================== -->
+    <div class="page french">
+        <div class="title-deco">✧ ✦ ✧ ✦ ✧</div>
+        <div class="title">Французская кухня</div>
+        <div class="columns">
+            <div class="col">
+                <div class="category">🥐 Завтраки</div>
+                <div class="item"><span class="item-name">Круассаны с джемом</span><span class="item-composition">слоёное тесто, сливочное масло, джем</span></div>
+                <div class="item"><span class="item-name">Гренки с яйцом пашот</span><span class="item-composition">багет, яйцо, сливочное масло, зелень, уксус</span></div>
+                <div class="item"><span class="item-name">Тост с авокадо и лососем</span><span class="item-composition">тостовый хлеб, авокадо, слабосолёный лосось, лимон</span></div>
+                <div class="item"><span class="item-name">Киш Лорен</span><span class="item-composition">слоёное тесто, бекон, яйца, сливки, сыр Грюйер</span></div>
+                <div class="item"><span class="item-name">Клафути с вишней/яблоками</span><span class="item-composition">яйца, молоко, мука, сахар, вишня/яблоки, ваниль</span></div>
+
+                <div class="category">🍲 Супы</div>
+                <div class="item"><span class="item-name">Суп-пюре из цветной капусты</span><span class="item-composition">цветная капуста, лук-порей, картофель, сливки, мускат</span></div>
+                <div class="item"><span class="item-name">Буйабес</span><span class="item-composition">белая рыба, креветки, мидии, томаты, шафран, фенхель</span></div>
+                <div class="item"><span class="item-name">Грибной крем-суп</span><span class="item-composition">шампиньоны, картофель, сливки, лук, тимьян</span></div>
+                <div class="item"><span class="item-name">Суп «Пармантье»</span><span class="item-composition">картофель, лук-порей, куриный бульон, сливки</span></div>
+                <div class="item"><span class="item-name">Потофе</span><span class="item-composition">говядина на кости, морковь, лук-порей, сельдерей, гвоздика</span></div>
+
+                <div class="category">🥗 Салаты</div>
+                <div class="item"><span class="item-name">Нисуаз</span><span class="item-composition">тунец, яйца, помидоры, стручковая фасоль, оливки, масло+лимон</span></div>
+                <div class="item"><span class="item-name">Цезарь по-французски</span><span class="item-composition">салат романо, курица, сухарики, пармезан, соус (анчоусы, горчица)</span></div>
+                <div class="item"><span class="item-name">С козьим сыром</span><span class="item-composition">салатная смесь, козий сыр, орехи, клюква, медово-горчичная заправка</span></div>
+                <div class="item"><span class="item-name">Овощной с винегретной заправкой</span><span class="item-composition">помидоры, огурцы, перец, лук красный, оливки, бальзамик</span></div>
+            </div>
+            <div class="col">
+                <div class="category">🍗 Вторые блюда</div>
+                <div class="item"><span class="item-name">Курица в сливочном с эстрагоном</span><span class="item-composition">куриное филе, сливки, белое вино, эстрагон, горчица дижонская</span></div>
+                <div class="item"><span class="item-name">Стейк Рибай с соусом Бернез</span><span class="item-composition">говяжий рибай, желтки, уксус, эстрагон, сливочное масло</span></div>
+                <div class="item"><span class="item-name">Белая рыба «Мёньер»</span><span class="item-composition">треска/пикша, мука, сливочное масло, лимон, каперсы</span></div>
+                <div class="item"><span class="item-name">Рагу из курицы с грибами</span><span class="item-composition">курица, шампиньоны, сливки, белое вино, тимьян</span></div>
+                <div class="item"><span class="item-name">Говяжье филе с красным вином</span><span class="item-composition">говяжья вырезка, красное вино, лук-шалот, бульон, тимьян</span></div>
+
+                <div class="category">🍚 Гарниры</div>
+                <div class="item"><span class="item-name">Картофель Гратен</span><span class="item-composition">картофель, сливки, чеснок, сыр Грюйер, мускатный орех</span></div>
+                <div class="item"><span class="item-name">Рататуй</span><span class="item-composition">кабачки, баклажаны, перец, томаты, прованские травы</span></div>
+                <div class="item"><span class="item-name">Рис с овощами</span><span class="item-composition">рис, морковь, лук, горошек, кукуруза</span></div>
+                <div class="item"><span class="item-name">Картофельное пюре с мускатом</span><span class="item-composition">картофель, сливочное масло, молоко, мускатный орех</span></div>
+                <div class="item"><span class="item-name">Стручковая фасоль на пару</span><span class="item-composition">стручковая фасоль, сливочное масло, лимон</span></div>
+
+                <div class="category">🍰 Десерты</div>
+                <div class="item"><span class="item-name">Крем-брюле</span><span class="item-composition">желтки, сливки, сахар, ваниль, карамельная корочка</span></div>
+                <div class="item"><span class="item-name">Тарт Татен</span><span class="item-composition">слоёное тесто, яблоки, сахар, сливочное масло</span></div>
+                <div class="item"><span class="item-name">Шоколадный фондан</span><span class="item-composition">тёмный шоколад, масло, яйца, сахар, мука</span></div>
+                <div class="item"><span class="item-name">Шоколадный мусс</span><span class="item-composition">шоколад, яйца, сахар, сливки</span></div>
+            </div>
+        </div>
+        <div class="footer-line">✧ ✦ ✧ ✦ ✧</div>
+    </div>
+
+    <!-- ==================== 2. ИТАЛЬЯНСКАЯ ==================== -->
+    <div class="page italian">
+        <div class="title-deco">❀ ✿ ❀ ✿ ❀</div>
+        <div class="title">Итальянская кухня</div>
+        <div class="columns">
+            <div class="col">
+                <div class="category">🥐 Завтраки</div>
+                <div class="item"><span class="item-name">Корнетти</span><span class="item-composition">слоёное дрожжевое тесто, заварной крем/джем</span></div>
+                <div class="item"><span class="item-name">Фиадетта с сыром</span><span class="item-composition">мука, йогурт, твёрдый сыр</span></div>
+                <div class="item"><span class="item-name">Молочный ризотто с ягодами</span><span class="item-composition">рис арборио, молоко, сахар, ягоды</span></div>
+
+                <div class="category">🍲 Супы</div>
+                <div class="item"><span class="item-name">Минестроне</span><span class="item-composition">овощи, паста, фасоль, томаты, оливковое масло</span></div>
+                <div class="item"><span class="item-name">Суп с фрикадельками</span><span class="item-composition">куриный/говяжий фарш, шпинат, пармезан, паста</span></div>
+                <div class="item"><span class="item-name">Рыбный суп с помидорами</span><span class="item-composition">белая рыба, томаты, чеснок, базилик</span></div>
+                <div class="item"><span class="item-name">Томатный суп с базиликом</span><span class="item-composition">томаты, лук, чеснок, сливки, базилик</span></div>
+
+                <div class="category">🥗 Салаты</div>
+                <div class="item"><span class="item-name">Капрезе</span><span class="item-composition">помидоры черри, моцарелла, базилик, оливковое масло</span></div>
+                <div class="item"><span class="item-name">Панцанелла</span><span class="item-composition">хлеб, помидоры, лук красный, базилик, уксус</span></div>
+                <div class="item"><span class="item-name">С рукколой, пармезаном и орехами</span><span class="item-composition">руккола, пармезан, грецкие орехи, лимон</span></div>
+                <div class="item"><span class="item-name">Тёплый с курицей и беконом</span><span class="item-composition">курица, бекон, салатная смесь, яйцо пашот</span></div>
+            </div>
+            <div class="col">
+                <div class="category">🍗 Вторые блюда</div>
+                <div class="item"><span class="item-name">Паста Карбонара</span><span class="item-composition">спагетти, бекон, яйца, пармезан, чёрный перец</span></div>
+                <div class="item"><span class="item-name">Паста Болоньезе</span><span class="item-composition">говяжий/куриный фарш, томаты, морковь, сельдерей, вино</span></div>
+                <div class="item"><span class="item-name">Курица в томатно-сливочном</span><span class="item-composition">курица, томаты, сливки, орегано</span></div>
+                <div class="item"><span class="item-name">Рыба по-милански</span><span class="item-composition">белая рыба, яйцо, панировка, пармезан, лимон</span></div>
+                <div class="item"><span class="item-name">Оссобуко</span><span class="item-composition">говяжья голень, овощи, томаты, белое вино</span></div>
+                <div class="item"><span class="item-name">Лазанья</span><span class="item-composition">листы, фарш, соус болоньезе, бешамель, пармезан</span></div>
+
+                <div class="category">🍚 Гарниры</div>
+                <div class="item"><span class="item-name">Спагетти / Лингвини / Феттучини</span><span class="item-composition">паста, оливковое масло</span></div>
+                <div class="item"><span class="item-name">Ризотто (грибной/овощной)</span><span class="item-composition">рис арборио, грибы/овощи, бульон, пармезан</span></div>
+                <div class="item"><span class="item-name">Полента</span><span class="item-composition">кукурузная крупа, вода, масло, сыр</span></div>
+                <div class="item"><span class="item-name">Овощи-гриль</span><span class="item-composition">цуккини, перец, баклажаны</span></div>
+
+                <div class="category">🍰 Десерты</div>
+                <div class="item"><span class="item-name">Тирамису</span><span class="item-composition">савоярди, маскарпоне, яйца, кофе, какао</span></div>
+                <div class="item"><span class="item-name">Панна-котта</span><span class="item-composition">сливки, сахар, желатин, ваниль, ягодный соус</span></div>
+                <div class="item"><span class="item-name">Канноли</span><span class="item-composition">трубочки из слоёного теста, рикотта, сахар, цукаты</span></div>
+            </div>
+        </div>
+        <div class="footer-line">❀ ✿ ❀ ✿ ❀</div>
+    </div>
+
+    <!-- ==================== 3. АЗИАТСКАЯ ==================== -->
+    <div class="page asian">
+        <div class="title-deco">✦ ✧ ✦ ✧ ✦</div>
+        <div class="title">Азиатская кухня</div>
+        <div class="columns">
+            <div class="col">
+                <div class="category">🥢 Завтраки</div>
+                <div class="item"><span class="item-name">Омлет с соевым соусом</span><span class="item-composition">яйца, соевый соус, зелёный лук, кунжутное масло</span></div>
+                <div class="item"><span class="item-name">Сладкие рисовые шарики</span><span class="item-composition">рисовая мука, сахар, кунжут</span></div>
+                <div class="item"><span class="item-name">Тосты с тахини</span><span class="item-composition">хлеб, кунжутная паста, мёд</span></div>
+                <div class="item"><span class="item-name">Лапша с яйцом и зеленью</span><span class="item-composition">лапша, яйца, зелёный лук, соевый соус</span></div>
+
+                <div class="category">🍲 Супы</div>
+                <div class="item"><span class="item-name">Том Ям</span><span class="item-composition">креветки/курица, грибы, лимонник, лайм, чили, кокосовое молоко</span></div>
+                <div class="item"><span class="item-name">Прозрачный суп с лапшой и имбирём</span><span class="item-composition">курица, рисовая лапша, имбирь, соевый соус</span></div>
+                <div class="item"><span class="item-name">Кисло-острый суп с белой рыбой</span><span class="item-composition">белая рыба, томаты, имбирь, уксус, соевый соус</span></div>
+                <div class="item"><span class="item-name">Мисо суп</span><span class="item-composition">паста мисо, тофу, водоросли вакаме, зелёный лук</span></div>
+                <div class="item"><span class="item-name">Том Кха с курицей</span><span class="item-composition">курица, кокосовое молоко, лимонник, грибы, лайм</span></div>
+
+                <div class="category">🥗 Салаты</div>
+                <div class="item"><span class="item-name">С ростками и соевым соусом</span><span class="item-composition">ростки сои, огурец, кунжут, соевый соус</span></div>
+                <div class="item"><span class="item-name">С манго и креветками</span><span class="item-composition">манго, креветки, салат, кешью, лайм</span></div>
+                <div class="item"><span class="item-name">Тайский с курицей</span><span class="item-composition">курица, капуста, морковь, огурец, рыбный соус</span></div>
+                <div class="item"><span class="item-name">Из водорослей вакаме</span><span class="item-composition">водоросли вакаме, кунжут, рисовый уксус</span></div>
+            </div>
+            <div class="col">
+                <div class="category">🍗 Вторые блюда</div>
+                <div class="item"><span class="item-name">Курица Терияки</span><span class="item-composition">курица, соевый соус, мирин, имбирь, чеснок</span></div>
+                <div class="item"><span class="item-name">Свинина в кисло-сладком соусе</span><span class="item-composition">свинина, ананас, перец, кетчуп, уксус, сахар</span></div>
+                <div class="item"><span class="item-name">Говядина с брокколи</span><span class="item-composition">говядина, брокколи, соевый соус, чеснок, имбирь</span></div>
+                <div class="item"><span class="item-name">Белая рыба на пару с имбирём</span><span class="item-composition">рыба, имбирь, соевый соус, кунжутное масло</span></div>
+                <div class="item"><span class="item-name">Тайское карри</span><span class="item-composition">курица/креветки, кокосовое молоко, паста карри, овощи</span></div>
+                <div class="item"><span class="item-name">Лапша Wok с курицей/креветками</span><span class="item-composition">лапша, курица/креветки, овощи, соевый соус, чеснок</span></div>
+
+                <div class="category">🍚 Гарниры</div>
+                <div class="item"><span class="item-name">Рис жасмин / пропаренный</span><span class="item-composition">рис, вода, соль</span></div>
+                <div class="item"><span class="item-name">Рисовая / пшеничная лапша</span><span class="item-composition">лапша, вода</span></div>
+                <div class="item"><span class="item-name">Овощи на пару</span><span class="item-composition">брокколи, морковь, стручковая фасоль</span></div>
+
+                <div class="category">🍰 Десерты</div>
+                <div class="item"><span class="item-name">Манго с клейким рисом</span><span class="item-composition">клейкий рис, манго, кокосовое молоко, сахар</span></div>
+                <div class="item"><span class="item-name">Японский чизкейк</span><span class="item-composition">сливочный сыр, сливки, яйца, мука, сахар</span></div>
+                <div class="item"><span class="item-name">Бананы во фритюре</span><span class="item-composition">бананы, тесто, мёд, кунжут</span></div>
+            </div>
+        </div>
+        <div class="footer-line">✦ ✧ ✦ ✧ ✦</div>
+    </div>
+
+    <!-- ==================== 4. РУССКАЯ ==================== -->
+    <div class="page russian">
+        <div class="title-deco">✦ ✦ ✦ ✦ ✦</div>
+        <div class="title">Русская кухня</div>
+        <div class="columns">
+            <div class="col">
+                <div class="category">🥞 Завтраки</div>
+                <div class="item"><span class="item-name">Сырники</span><span class="item-composition">творог, яйца, мука, сахар</span></div>
+                <div class="item"><span class="item-name">Блины / Оладьи</span><span class="item-composition">мука, яйца, молоко/кефир, сода, сахар</span></div>
+                <div class="item"><span class="item-name">Каша (гречка/рис/пшёнка)</span><span class="item-composition">крупа, молоко/вода, соль, сахар, масло</span></div>
+                <div class="item"><span class="item-name">Бутерброды с маслом и икрой</span><span class="item-composition">хлеб, сливочное масло, красная икра</span></div>
+
+                <div class="category">🍲 Супы</div>
+                <div class="item"><span class="item-name">Борщ</span><span class="item-composition">говядина, свекла, капуста, картофель, морковь, томатная паста</span></div>
+                <div class="item"><span class="item-name">Щи (свежие/кислые)</span><span class="item-composition">говядина/курица, капуста, картофель, морковь</span></div>
+                <div class="item"><span class="item-name">Рассольник</span><span class="item-composition">говядина/курица, перловка, картофель, солёные огурцы, рассол</span></div>
+                <div class="item"><span class="item-name">Солянка</span><span class="item-composition">говядина, колбаса, солёные огурцы, оливки, томатная паста</span></div>
+                <div class="item"><span class="item-name">Грибной суп с лапшой</span><span class="item-composition">грибы, картофель, лук, морковь, лапша</span></div>
+
+                <div class="category">🥗 Салаты</div>
+                <div class="item"><span class="item-name">Оливье</span><span class="item-composition">картофель, морковь, яйца, колбаса/курица, солёные огурцы, горошек</span></div>
+                <div class="item"><span class="item-name">Винегрет</span><span class="item-composition">свекла, картофель, морковь, солёные огурцы, лук, масло</span></div>
+                <div class="item"><span class="item-name">Селёдка под шубой</span><span class="item-composition">сельдь, свекла, картофель, морковь, яйца, лук, майонез</span></div>
+                <div class="item"><span class="item-name">С крабовыми палочками</span><span class="item-composition">крабовые палочки, капуста, огурец, кукуруза, майонез</span></div>
+                <div class="item"><span class="item-name">Греческий</span><span class="item-composition">помидоры, огурцы, перец, фета, маслины, оливковое масло</span></div>
+                <div class="item"><span class="item-name">Чафан</span><span class="item-composition">говядина, помидоры, огурцы, лук красный, кинза, зира</span></div>
+            </div>
+            <div class="col">
+                <div class="category">🍗 Вторые блюда</div>
+                <div class="item"><span class="item-name">Котлеты</span><span class="item-composition">говяжий/куриный фарш, лук, хлеб, яйцо</span></div>
+                <div class="item"><span class="item-name">Бефстроганов</span><span class="item-composition">говядина, лук, сметана, томатная паста</span></div>
+                <div class="item"><span class="item-name">Курица тушёная со сметаной</span><span class="item-composition">курица, лук, сметана, мука</span></div>
+                <div class="item"><span class="item-name">Жаркое по-домашнему</span><span class="item-composition">свинина/говядина, картофель, лук, морковь, томатная паста</span></div>
+                <div class="item"><span class="item-name">Рыба жареная с луком и морковью</span><span class="item-composition">рыба, лук, морковь, томатная паста</span></div>
+                <div class="item"><span class="item-name">Голубцы</span><span class="item-composition">капустные листы, фарш, рис, томатный соус</span></div>
+                <div class="item"><span class="item-name">Пельмени</span><span class="item-composition">тесто, фарш (говяжий/свиной), лук</span></div>
+
+                <div class="category">🍚 Гарниры</div>
+                <div class="item"><span class="item-name">Картофельное пюре</span><span class="item-composition">картофель, молоко, сливочное масло</span></div>
+                <div class="item"><span class="item-name">Гречка рассыпчатая</span><span class="item-composition">гречка, вода, масло</span></div>
+                <div class="item"><span class="item-name">Рис с морковью</span><span class="item-composition">рис, морковь, лук, масло</span></div>
+                <div class="item"><span class="item-name">Макароны</span><span class="item-composition">макароны, масло</span></div>
+                <div class="item"><span class="item-name">Тушёная капуста</span><span class="item-composition">капуста, лук, морковь, томатная паста</span></div>
+
+                <div class="category">🍰 Десерты</div>
+                <div class="item"><span class="item-name">Шарлотка</span><span class="item-composition">яблоки, яйца, мука, сахар</span></div>
+                <div class="item"><span class="item-name">Манник</span><span class="item-composition">манка, кефир, яйца, сахар, масло</span></div>
+                <div class="item"><span class="item-name">Трубочки со сгущёнкой</span><span class="item-composition">слоёное тесто, варёная сгущёнка</span></div>
+                <div class="item"><span class="item-name">Медовые пряники</span><span class="item-composition">мёд, мука, яйца, сахар, пряности</span></div>
+            </div>
+        </div>
+        <div class="footer-line">✦ ✦ ✦ ✦ ✦</div>
+    </div>
+
+    <!-- ==================== 5. КАВКАЗСКАЯ ==================== -->
+    <div class="page caucasian">
+        <div class="title-deco">✦ ✧ ✦ ✧ ✦</div>
+        <div class="title">Кавказская кухня</div>
+        <div class="columns">
+            <div class="col">
+                <div class="category">🥞 Завтраки</div>
+                <div class="item"><span class="item-name">Хачапури</span><span class="item-composition">дрожжевое тесто, сыр сулугуни/имеретинский, яйцо</span></div>
+                <div class="item"><span class="item-name">Мамалыга с сыром и маслом</span><span class="item-composition">кукурузная крупа, вода, сыр, сливочное масло</span></div>
+                <div class="item"><span class="item-name">Яичница с помидорами и зеленью</span><span class="item-composition">яйца, помидоры, кинза, масло</span></div>
+
+                <div class="category">🍲 Супы</div>
+                <div class="item"><span class="item-name">Харчо</span><span class="item-composition">говядина, рис, грецкие орехи, томатная паста, хмели-сунели</span></div>
+                <div class="item"><span class="item-name">Чихиртма</span><span class="item-composition">курица, яйца, мука, лимон, кинза</span></div>
+                <div class="item"><span class="item-name">Суп с курицей и лапшой</span><span class="item-composition">курица, лапша, лук, чеснок, хмели-сунели</span></div>
+
+                <div class="category">🥗 Салаты</div>
+                <div class="item"><span class="item-name">Пхали</span><span class="item-composition">свекла/шпинат, грецкие орехи, чеснок, кинза, гранатовый сок</span></div>
+                <div class="item"><span class="item-name">Из помидоров с зеленью</span><span class="item-composition">помидоры, лук красный, огурец, кинза, оливковое масло</span></div>
+                <div class="item"><span class="item-name">С фасолью и орехами</span><span class="item-composition">красная фасоль, грецкие орехи, лук, кинза, гранатовый сок</span></div>
+                <div class="item"><span class="item-name">Аджапсандали (закуска)</span><span class="item-composition">баклажаны, перец, помидоры, лук, чеснок, кинза</span></div>
+            </div>
+            <div class="col">
+                <div class="category">🍗 Вторые блюда</div>
+                <div class="item"><span class="item-name">Чахохбили</span><span class="item-composition">курица, томаты, лук, чеснок, хмели-сунели, кинза</span></div>
+                <div class="item"><span class="item-name">Шашлык</span><span class="item-composition">свинина/говядина, лук, уксус, зира</span></div>
+                <div class="item"><span class="item-name">Долма</span><span class="item-composition">виноградные листья, фарш, рис, зелень, специи</span></div>
+                <div class="item"><span class="item-name">Сациви</span><span class="item-composition">курица, грецкие орехи, лук, чеснок, хмели-сунели</span></div>
+                <div class="item"><span class="item-name">Цыпленок табака</span><span class="item-composition">цыпленок, чеснок, специи, масло</span></div>
+                <div class="item"><span class="item-name">Лобио</span><span class="item-composition">красная фасоль, лук, чеснок, грецкие орехи, кинза</span></div>
+
+                <div class="category">🍚 Гарниры</div>
+                <div class="item"><span class="item-name">Гоми</span><span class="item-composition">кукурузная мука, вода, соль</span></div>
+                <div class="item"><span class="item-name">Рис с барбарисом</span><span class="item-composition">рис, сушёный барбарис, масло</span></div>
+                <div class="item"><span class="item-name">Овощи-гриль</span><span class="item-composition">баклажаны, перец, помидоры</span></div>
+                <div class="item"><span class="item-name">Картофель с чесноком и зеленью</span><span class="item-composition">картофель, чеснок, кинза, масло</span></div>
+
+                <div class="category">🍰 Десерты</div>
+                <div class="item"><span class="item-name">Пахлава</span><span class="item-composition">слоёное тесто, грецкие орехи, мёд, корица</span></div>
+                <div class="item"><span class="item-name">Чурчхела</span><span class="item-composition">грецкие орехи, виноградный сок, мука, сахар</span></div>
+                <div class="item"><span class="item-name">Мёд с орехами</span><span class="item-composition">мёд, грецкие орехи</span></div>
+            </div>
+        </div>
+        <div class="footer-line">✦ ✧ ✦ ✧ ✦</div>
+    </div>
+
+    <!-- ==================== 6. СОУСЫ ==================== -->
+    <div class="page sauces">
+        <div class="title-deco">✦ ✧ ✦ ✧ ✦</div>
+        <div class="title">Соусы и заправки</div>
+        <div class="columns">
+            <div class="col">
+                <div class="category">🥗 Для салатов</div>
+                <div class="item"><span class="item-name">Классический винегрет</span><span class="item-composition">оливковое масло, бальзамический уксус, горчица</span></div>
+                <div class="item"><span class="item-name">Медово-горчичный</span><span class="item-composition">мёд, горчица, лимон, оливковое масло</span></div>
+                <div class="item"><span class="item-name">Цезарь</span><span class="item-composition">яйцо, анчоусы, горчица, оливковое масло, пармезан</span></div>
+                <div class="item"><span class="item-name">Сметанно-чесночный</span><span class="item-composition">сметана, чеснок, укроп, лимон</span></div>
+                <div class="item"><span class="item-name">Греческий</span><span class="item-composition">оливковое масло, лимон, орегано, чеснок</span></div>
+                <div class="item"><span class="item-name">Азиатский</span><span class="item-composition">соевый соус, имбирь, чеснок, рисовый уксус, кунжутное масло</span></div>
+            </div>
+            <div class="col">
+                <div class="category">🍗 Для мяса / рыбы</div>
+                <div class="item"><span class="item-name">Сливочно-чесночный</span><span class="item-composition">сливки, чеснок, пармезан, мускат</span></div>
+                <div class="item"><span class="item-name">Томатный базовый</span><span class="item-composition">томаты, лук, чеснок, орегано</span></div>
+                <div class="item"><span class="item-name">Бернез</span><span class="item-composition">желтки, эстрагон, уксус, сливочное масло</span></div>
+                <div class="item"><span class="item-name">Грибной</span><span class="item-composition">шампиньоны, сливки, бульон, тимьян</span></div>
+                <div class="item"><span class="item-name">Терияки</span><span class="item-composition">соевый соус, мирин, имбирь, чеснок, сахар</span></div>
+                <div class="item"><span class="item-name">Ореховый (сациви)</span><span class="item-composition">грецкие орехи, чеснок, кинза, хмели-сунели, гранатовый сок</span></div>
+                <div class="item"><span class="item-name">Красное вино (к говядине)</span><span class="item-composition">красное вино, бульон, лук-шалот, тимьян</span></div>
+
+                <div class="category">🍚 Универсальные</div>
+                <div class="item"><span class="item-name">Песто</span><span class="item-composition">базилик, пармезан, кедровые орехи, оливковое масло</span></div>
+                <div class="item"><span class="item-name">Бешамель</span><span class="item-composition">молоко, мука, сливочное масло, мускат</span></div>
+                <div class="item"><span class="item-name">Сырный</span><span class="item-composition">сыр чеддер, сливки, сливочное масло</span></div>
+                <div class="item"><span class="item-name">Сметанно-грибной</span><span class="item-composition">сметана, грибы, лук, зелень</span></div>
+                <div class="item"><span class="item-name">Йогуртовый с зеленью</span><span class="item-composition">греческий йогурт, укроп, мята, чеснок, лимон</span></div>
+            </div>
+        </div>
+        <div class="footer-line">✦ ✧ ✦ ✧ ✦</div>
+    </div>
+
+    <!-- ==================== 7. ДЕСЕРТЫ ==================== -->
+    <div class="page desserts">
+        <div class="title-deco">✦ ✧ ✦ ✧ ✦</div>
+        <div class="title">Десерты</div>
+        <div class="columns">
+            <div class="col">
+                <div class="category">⚡ Быстрые</div>
+                <div class="item"><span class="item-name">Ягодный кулис</span><span class="item-composition">замороженные ягоды, сахар, лимон, крахмал</span></div>
+                <div class="item"><span class="item-name">Клубника / банан со сметаной</span><span class="item-composition">клубника, банан, сметана, сахарная пудра</span></div>
+                <div class="item"><span class="item-name">Запечённые яблоки</span><span class="item-composition">яблоки, мёд, орехи, корица</span></div>
+                <div class="item"><span class="item-name">Жженка (карамельные орехи)</span><span class="item-composition">грецкие орехи, сахар, сливочное масло</span></div>
+
+                <div class="category">🔥 Средней сложности</div>
+                <div class="item"><span class="item-name">Шарлотка</span><span class="item-composition">яблоки, яйца, мука, сахар, корица</span></div>
+                <div class="item"><span class="item-name">Манник</span><span class="item-composition">манка, кефир, яйца, сахар, масло</span></div>
+                <div class="item"><span class="item-name">Шоколадный фондан</span><span class="item-composition">шоколад, масло, яйца, сахар, мука</span></div>
+                <div class="item"><span class="item-name">Кекс шоколадный</span><span class="item-composition">мука, какао, яйца, сахар, масло</span></div>
+                <div class="item"><span class="item-name">Брауни</span><span class="item-composition">шоколад, масло, яйца, сахар, мука, орехи</span></div>
+                <div class="item"><span class="item-name">Песочный пирог с вареньем</span><span class="item-composition">мука, масло, сахар, яйцо, варенье</span></div>
+                <div class="item"><span class="item-name">Наполеон (упрощённый)</span><span class="item-composition">слоёное тесто, заварной крем</span></div>
+                <div class="item"><span class="item-name">Панна-котта</span><span class="item-composition">сливки, сахар, желатин, ваниль, ягодный соус</span></div>
+                <div class="item"><span class="item-name">Шоколадный мусс</span><span class="item-composition">шоколад, яйца, сахар, сливки</span></div>
+                <div class="item"><span class="item-name">Трубочки со сгущёнкой</span><span class="item-composition">слоёное тесто, варёная сгущёнка</span></div>
+                <div class="item"><span class="item-name">Медовые пряники</span><span class="item-composition">мёд, мука, яйца, сахар, пряности</span></div>
+            </div>
+            <div class="col">
+                <div class="category">👩‍🍳 Сложные</div>
+                <div class="item"><span class="item-name">Тирамису</span><span class="item-composition">савоярди, маскарпоне, яйца, кофе, какао</span></div>
+                <div class="item"><span class="item-name">Эклеры</span><span class="item-composition">заварное тесто, заварной крем, шоколадная глазурь</span></div>
+                <div class="item"><span class="item-name">Профитроли</span><span class="item-composition">заварное тесто, заварной крем/сгущёнка</span></div>
+                <div class="item"><span class="item-name">Безе / Меренги</span><span class="item-composition">белки, сахар, ваниль</span></div>
+                <div class="item"><span class="item-name">Панчо</span><span class="item-composition">бисквит, ананасы, сметанный крем, шоколадная глазурь</span></div>
+                <div class="item"><span class="item-name">Медовик</span><span class="item-composition">мёд, яйца, сахар, масло, сметанный крем</span></div>
+                <div class="item"><span class="item-name">Макаруны</span><span class="item-composition">миндальная мука, белки, сахарная пудра, краситель, начинка</span></div>
+                <div class="item"><span class="item-name">Торт «Прага»</span><span class="item-composition">шоколадный бисквит, масляный крем с варёной сгущёнкой</span></div>
+                <div class="item"><span class="item-name">Крем-брюле</span><span class="item-composition">желтки, сливки, сахар, ваниль, карамель</span></div>
+                <div class="item"><span class="item-name">Канноли</span><span class="item-composition">трубочки из теста, рикотта, сахар, цукаты</span></div>
+                <div class="item"><span class="item-name">Манго с клейким рисом</span><span class="item-composition">клейкий рис, манго, кокосовое молоко, сахар</span></div>
+                <div class="item"><span class="item-name">Японский чизкейк</span><span class="item-composition">сливочный сыр, сливки, яйца, мука, сахар</span></div>
+                <div class="item"><span class="item-name">Бананы во фритюре</span><span class="item-composition">бананы, тесто, мёд, кунжут</span></div>
+                <div class="item"><span class="item-name">Пахлава</span><span class="item-composition">слоёное тесто, грецкие орехи, мёд, корица</span></div>
+                <div class="item"><span class="item-name">Чурчхела</span><span class="item-composition">грецкие орехи, виноградный сок, мука, сахар</span></div>
+                <div class="item"><span class="item-name">Мёд с орехами</span><span class="item-composition">мёд, грецкие орехи</span></div>
+                <div class="item"><span class="item-name">Тарт Татен</span><span class="item-composition">слоёное тесто, яблоки, сахар, сливочное масло</span></div>
+            </div>
+        </div>
+        <div class="footer-line">✦ ✧ ✦ ✧ ✦</div>
+    </div>
+
+
+</body></html>
