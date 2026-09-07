@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0085)file:///C:/Users/karau/Desktop/%D0%BC%D0%B5%D0%BD%D1%8E/%D0%9C%D0%B5%D0%BD%D1%8E.html -->
-<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Меню с цветами и декором</title>
+    <title>Меню</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -12,66 +12,64 @@
             flex-direction: column;
             align-items: center;
             font-family: 'Segoe UI', 'Arial', sans-serif;
-            padding: 20px;
+            padding: 10px;
         }
         .page {
-            width: 210mm;
-            min-height: 297mm;
+            width: 100%;
+            max-width: 210mm;
             background: #fdf8f0;
             margin-bottom: 20px;
-            padding: 16mm 14mm 12mm;
-            box-shadow: 0 0 20px rgba(0,0,0,0.12);
+            padding: 12mm 10mm;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
             border-radius: 4px;
             display: flex;
             flex-direction: column;
-            page-break-after: always;
-            position: relative;
             border: 4px solid transparent;
+            position: relative;
         }
-        /* декоративная рамка */
         .page::before {
             content: '';
             position: absolute;
-            top: 8px; left: 8px; right: 8px; bottom: 8px;
-            border: 2px solid rgba(0,0,0,0.08);
+            top: 6px; left: 6px; right: 6px; bottom: 6px;
+            border: 2px solid rgba(0,0,0,0.06);
             border-radius: 2px;
             pointer-events: none;
         }
         .title {
-            font-size: 34pt;
+            font-size: 28pt;
             font-weight: 700;
             text-align: center;
-            padding-bottom: 5mm;
-            margin-bottom: 6mm;
+            padding-bottom: 4mm;
+            margin-bottom: 5mm;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
+            letter-spacing: 1.5px;
         }
         .title-deco {
             text-align: center;
-            font-size: 16pt;
-            letter-spacing: 8px;
-            margin-bottom: 4mm;
-            opacity: 0.6;
+            font-size: 14pt;
+            letter-spacing: 6px;
+            margin-bottom: 3mm;
+            opacity: 0.5;
         }
         .columns {
             display: flex;
-            gap: 8mm;
+            gap: 6mm;
             flex: 1;
+            flex-wrap: wrap;
         }
         .col {
             flex: 1;
+            min-width: 200px;
             display: flex;
             flex-direction: column;
         }
         .category {
-            font-size: 17pt;
+            font-size: 16pt;
             font-weight: 700;
-            margin-top: 5mm;
-            margin-bottom: 2.5mm;
+            margin-top: 4mm;
+            margin-bottom: 2mm;
             border-bottom: 2px solid;
             padding-bottom: 1mm;
-            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -79,67 +77,75 @@
         .item {
             display: flex;
             flex-direction: column;
-            margin-bottom: 2.2mm;
+            margin-bottom: 2mm;
         }
         .item-name {
-            font-size: 13pt;
+            font-size: 12.5pt;
             font-weight: 600;
             color: #2c2c2c;
             line-height: 1.3;
         }
         .item-composition {
-            font-size: 10.5pt;
+            font-size: 10pt;
             font-weight: 400;
             color: #666;
             line-height: 1.4;
-            margin-top: 0.5mm;
-            padding-left: 3mm;
+            margin-top: 0.3mm;
+            padding-left: 2mm;
             font-style: italic;
         }
         .footer-line {
             margin-top: auto;
             border-top: 2px solid #ddd;
-            padding-top: 4mm;
+            padding-top: 3mm;
             text-align: center;
-            font-size: 14pt;
-            letter-spacing: 6px;
-            opacity: 0.7;
+            font-size: 12pt;
+            letter-spacing: 4px;
+            opacity: 0.6;
         }
 
-        /* ===== ФРАНЦУЗСКАЯ ===== */
+        /* ===== ЦВЕТА КУХОНЬ (как и были) ===== */
         .french { border-color: #8B1A1A; background: #fdf6f0; }
         .french .title { color: #8B1A1A; border-bottom-color: #8B1A1A; }
         .french .category { color: #8B1A1A; border-bottom-color: #8B1A1A; }
 
-        /* ===== ИТАЛЬЯНСКАЯ ===== */
         .italian { border-color: #008C45; background: #f6faf5; }
         .italian .title { color: #008C45; border-bottom-color: #008C45; }
         .italian .category { color: #008C45; border-bottom-color: #008C45; }
 
-        /* ===== АЗИАТСКАЯ ===== */
         .asian { border-color: #B8860B; background: #fdfaf2; }
         .asian .title { color: #B8860B; border-bottom-color: #B8860B; }
         .asian .category { color: #B8860B; border-bottom-color: #B8860B; }
 
-        /* ===== РУССКАЯ ===== */
         .russian { border-color: #B22222; background: #fdf6f3; }
         .russian .title { color: #B22222; border-bottom-color: #B22222; }
         .russian .category { color: #B22222; border-bottom-color: #B22222; }
 
-        /* ===== КАВКАЗСКАЯ ===== */
         .caucasian { border-color: #D2691E; background: #fdf7f0; }
         .caucasian .title { color: #D2691E; border-bottom-color: #D2691E; }
         .caucasian .category { color: #D2691E; border-bottom-color: #D2691E; }
 
-        /* ===== СОУСЫ ===== */
         .sauces { border-color: #5D3A1A; background: #f8f4ef; }
         .sauces .title { color: #5D3A1A; border-bottom-color: #5D3A1A; }
         .sauces .category { color: #5D3A1A; border-bottom-color: #5D3A1A; }
 
-        /* ===== ДЕСЕРТЫ ===== */
         .desserts { border-color: #8B008B; background: #fdf6fc; }
         .desserts .title { color: #8B008B; border-bottom-color: #8B008B; }
         .desserts .category { color: #8B008B; border-bottom-color: #8B008B; }
+
+        /* ===== АДАПТИВ ДЛЯ ТЕЛЕФОНА ===== */
+        @media (max-width: 800px) {
+            body { padding: 5px; }
+            .page { padding: 8mm 6mm; }
+            .title { font-size: 20pt; }
+            .title-deco { font-size: 11pt; letter-spacing: 4px; }
+            .category { font-size: 14pt; }
+            .item-name { font-size: 11pt; }
+            .item-composition { font-size: 9pt; }
+            .columns { flex-direction: column; gap: 2mm; }
+            .col { min-width: unset; }
+            .footer-line { font-size: 10pt; }
+        }
 
         @media print {
             body { background: white; padding: 0; }
@@ -150,7 +156,7 @@
 </head>
 <body>
 
-    <!-- ==================== 1. ФРАНЦУЗСКАЯ ==================== -->
+    <!-- ФРАНЦУЗСКАЯ -->
     <div class="page french">
         <div class="title-deco">✧ ✦ ✧ ✦ ✧</div>
         <div class="title">Французская кухня</div>
@@ -201,7 +207,7 @@
         <div class="footer-line">✧ ✦ ✧ ✦ ✧</div>
     </div>
 
-    <!-- ==================== 2. ИТАЛЬЯНСКАЯ ==================== -->
+    <!-- ИТАЛЬЯНСКАЯ -->
     <div class="page italian">
         <div class="title-deco">❀ ✿ ❀ ✿ ❀</div>
         <div class="title">Итальянская кухня</div>
@@ -248,7 +254,7 @@
         <div class="footer-line">❀ ✿ ❀ ✿ ❀</div>
     </div>
 
-    <!-- ==================== 3. АЗИАТСКАЯ ==================== -->
+    <!-- АЗИАТСКАЯ -->
     <div class="page asian">
         <div class="title-deco">✦ ✧ ✦ ✧ ✦</div>
         <div class="title">Азиатская кухня</div>
@@ -296,7 +302,7 @@
         <div class="footer-line">✦ ✧ ✦ ✧ ✦</div>
     </div>
 
-    <!-- ==================== 4. РУССКАЯ ==================== -->
+    <!-- РУССКАЯ -->
     <div class="page russian">
         <div class="title-deco">✦ ✦ ✦ ✦ ✦</div>
         <div class="title">Русская кухня</div>
@@ -350,7 +356,7 @@
         <div class="footer-line">✦ ✦ ✦ ✦ ✦</div>
     </div>
 
-    <!-- ==================== 5. КАВКАЗСКАЯ ==================== -->
+    <!-- КАВКАЗСКАЯ -->
     <div class="page caucasian">
         <div class="title-deco">✦ ✧ ✦ ✧ ✦</div>
         <div class="title">Кавказская кухня</div>
@@ -396,7 +402,7 @@
         <div class="footer-line">✦ ✧ ✦ ✧ ✦</div>
     </div>
 
-    <!-- ==================== 6. СОУСЫ ==================== -->
+    <!-- СОУСЫ -->
     <div class="page sauces">
         <div class="title-deco">✦ ✧ ✦ ✧ ✦</div>
         <div class="title">Соусы и заправки</div>
@@ -431,7 +437,7 @@
         <div class="footer-line">✦ ✧ ✦ ✧ ✦</div>
     </div>
 
-    <!-- ==================== 7. ДЕСЕРТЫ ==================== -->
+    <!-- ДЕСЕРТЫ -->
     <div class="page desserts">
         <div class="title-deco">✦ ✧ ✦ ✧ ✦</div>
         <div class="title">Десерты</div>
@@ -480,5 +486,5 @@
         <div class="footer-line">✦ ✧ ✦ ✧ ✦</div>
     </div>
 
-
-</body></html>
+</body>
+</html>
